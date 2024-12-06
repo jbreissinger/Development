@@ -6,6 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuunt-latest
+    strategy:
+      matrix:
+        node-version: [20]
     permissions:
       contents: write
     steps:
