@@ -1,6 +1,6 @@
 {
-    "entryPointStrategy": "Packages",
-    "entryPoints": ["./nest-playground" ],
+    "entryPointStrategy": "expand",
+    //"entryPoints": ["./documentation-test" ],
     "name": "Personal Development Repo Autodocs",
     "compilerOptions": {
         "skipLibCheck": true,
