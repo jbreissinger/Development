@@ -1,0 +1,23 @@
+{
+    "entryPointStrategy": "Packages",
+    "entryPoints": ["./nest-playground" ],
+    "name": "Personal Development Repo Autodocs",
+    "compilerOptions": {
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+    },
+    "visibilityFilters": {
+        "protected": false,
+        "private": false,
+        "inherited": true,
+        "external": false,
+        "@alpha": false,
+        "@beta": false
+    },
+    //"projectDocuments": ["./infrastructure/mongo/README.md", "./docs/*"],
+    "out": "./autodocs",
+    "cleanOutputDir": true,
+    "categorizeByGroup": true,
+    //"hostedBaseUrl": "https://example.com", // TODO: replace with github pages URL
+    //"useHostedBaseUrlForAbsoluteLinks": true
+}

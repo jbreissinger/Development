@@ -1,0 +1,44 @@
+name: "Publish Autodocs"
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  build:
+    runs-on: ubuunt-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run-install: false
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Generate docs
+        run: |
+          pnpm install typedoc
+          pnpm typedoc
+      - uses:  actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ./autodoc
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environmnet:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v4      
